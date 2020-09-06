@@ -1,14 +1,16 @@
 import os
 
-import requests
+# import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
+
+FNAME = "dump.news"
 
 
 def crawler(ChromeDriverDir):
     newsUrl = input("뉴스의 URL을 입력하세요 : ")
     driver = webdriver.Chrome(ChromeDriverDir)
-    driver.implicitly_wait(3)  # 암묵적으로 웹 자원 로드를 위해 3초까지 기다려준다
+    # driver.implicitly_wait(3)  # 암묵적으로 웹 자원 로드를 위해 3초까지 기다려준다
     print("webdriver 조작중...")
     print("url 접근")
     driver.get(newsUrl)  # url에 접근한다
@@ -40,8 +42,10 @@ def crawler(ChromeDriverDir):
 
 
 def saver(journalName, title, article):
-    print("저장중...")
-    with open("dump.news", 'w', encoding='utf-8') as f:
+    print(FNAME + "에 저장중...")
+    with open(FNAME, 'w', encoding='utf-8') as f:
         f.write("신문사 : " + journalName + '\n')
         f.write("제목 : " + title + '\n\n')
         f.write(article)
+        print("기사가 " + FNAME + "에 저장되었습니다.", end="\n\n")
+    input("계속하려면 Enter")
