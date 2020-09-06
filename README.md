@@ -17,7 +17,7 @@
 # Setup  
 ## 프로젝트 다운로드  
   
-**news2atc**를 다운로드합니다. 위로가서 **🥦초록색🥦 Code** 버튼을 누른 후 **💾Download ZIP**을 클릭하거나, [여기](https://github.com/Phonedolly/news2atc/archive/master.zip)를 눌러 다운로드하세요. 그런 다음 `master.zip`의 압축을 적절한 곳에 풉니다. **위치를 잘 기억해두세요.**  
+**news2atc**를 다운로드합니다. 위로가서 **🥦초록색🥦 Code** 버튼을 누른 후 **💾Download ZIP**을 클릭하거나, [**여기**](https://github.com/Phonedolly/news2atc/archive/master.zip)를 눌러 다운로드하세요. 그런 다음 `master.zip`의 압축을 적절한 곳에 풉니다. **위치를 잘 기억해두세요.**  
   
 압축을 풀면 다음과 같은 파일들이 있을 것입니다.  
   
@@ -26,7 +26,7 @@
  - `crawler.py`  
   
 ## Python과 라이브러리 설치  
-**Python 3**이 필요합니다. [여기](https://www.python.org/downloads/)에서 파일을 받아 설치하세요.  
+**Python 3**이 필요합니다. [**여기**](https://www.python.org/downloads/)에서 파일을 받아 설치하세요.  
   
 이제 필요한 Python 라이브러리들을 설치할 차례입니다. 터미널(윈도우의 경우, **CMD**또는 **Powershell**)에서 다음을 입력하세요.  
 > **초보자 분들께 알려드립니다**: `$ `는 입력하지 마세요. `$`는 단순히 터미널에서 **한 줄의 시작**을 표시하기 위한 관용적 표현입니다.  
@@ -35,7 +35,7 @@
 ## Chrome Web Driver 받기  
   
 ### Chrome Web Driver 다운로드  
-**news2atc**는 **Chrome Web Driver**를 통해 웹브라우저에서 렌더링된 DOM에서 간편하게 기사를 추출합니다. [여기](https://chromedriver.chromium.org/downloads)에서 **여러분이 지금 사용하는 크롬 브라우저 버전에 대응되는** Chrome Web Driver를 받으세요.  
+**news2atc**는 **Chrome Web Driver**를 통해 웹브라우저에서 렌더링된 DOM에서 간편하게 기사를 추출합니다. [**여기**](https://chromedriver.chromium.org/downloads)에서 **여러분이 지금 사용하는 크롬 브라우저 버전에 대응되는** Chrome Web Driver를 받으세요.  
   
 >**초보자 분들을 위해:**  
 >현재 사용하는 크롬의 버전은 주소창에 `chrome://version`을 입력하시고 **Enter⌨️**키를 누르면 확인하실 수 있어요.  
