@@ -19,9 +19,10 @@ def clearScreen():
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     try:
-        with open('config.json') as f:
+        with open('config.json', encoding='utf-8') as f:
             json_data = json.load(f)
             ChromeDriverDir = json_data['ChromeDriverDir']
+            recruitData=json_data['recruit']
             # PhantomJSDir = json_data['PhantomJSDir']
     except Exception:
         print("config.json의 형식이 올바르지 않습니다. config.json은 'ChromeDriverDir' 키와 적절한 값(chromedriver의 경로)을 포함해야합니다.")
