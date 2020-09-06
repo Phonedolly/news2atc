@@ -37,7 +37,7 @@
 ### Chrome Web Driver 다운로드
 **news2atc**는 **Chrome Web Driver**를 통해 웹브라우저에서 렌더링된 DOM에서 간편하게 기사를 추출합니다. [여기](https://chromedriver.chromium.org/downloads)에서 **여러분이 지금 사용하는 크롬 브라우저 버전에 대응되는** Chrome Web Driver를 받으세요.
 
->**초보자 분들을 위해**
+>**초보자 분들을 위해:**
 >현재 사용하는 크롬의 버전은 주소창에 `chrome://version`을 입력하시고 **Enter⌨️**키를 누르면 확인하실 수 있어요.
 
 파일을 받고 압축을 풀면 Windows 기준으로 `chromedriver.exe`가 보일 것입니다. **이 파일의 위치를 잘 기억해둡니다.**
