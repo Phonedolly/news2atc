@@ -29,9 +29,11 @@
 **Python 3**이 필요합니다. [**여기**](https://www.python.org/downloads/)에서 파일을 받아 설치하세요.  
   
 이제 필요한 Python 라이브러리들을 설치할 차례입니다. 터미널(윈도우의 경우, **CMD**또는 **Powershell**)에서 다음을 입력하세요.  
-> **초보자 분들께 알려드립니다**: `$ `는 입력하지 마세요. `$`는 단순히 터미널에서 **한 줄의 시작**을 표시하기 위한 관용적 표현입니다.  
-  
- $ pip install bs4 $ pip install selenium  
+> **초보자 분들께 알려드립니다**: `$ `는 입력하지 마세요. `$`는 단순히 터미널에서 **한 줄의 시작**을 표시하기 위한 관용적 표현입니다. 
+
+	$ pip install bs4
+	$ pip install selenium
+
 ## Chrome Web Driver 받기  
   
 ### Chrome Web Driver 다운로드  
@@ -46,7 +48,11 @@
 이제 **news2atc**가 Chrome Web Driver를 인식할 수 있도록 작업해봅시다. 다음과 같이 `master.zip`의 압축을 푼 곳에서 `config.json`을 생성합니다. `config.json`에서 `chromedriver.exe`의 **위치**를 `ChromeDriverDir` **Key**의 **Value**로 설정합니다. 아래는 예시입니다.  
   
 #### config.json  
- { "ChromeDriverDir" : "C://chromedriver/chromedriver.exe" }  
+
+    {
+	     "ChromeDriverDir" : "C://chromedriver/chromedriver.exe"
+	}  
+
 # Run  
 ## 가져올 네이버 뉴스 링크 찾아보기  
 **news2act**는 네이버 뉴스 모바일 페이지에서 뉴스를 가져오도록 만들어졌습니다. 아래 링크 중 하나에 접속하시면 됩니다.  
@@ -58,8 +64,9 @@
 [m.news.naver.com](https://m.news.naver.com)  
   
 위 페이지에서 아무 뉴스나 들어가셔서 해당 링크를 복사합니다. 아래와 같은 형식이 될 것입니다.  
-  
- https://n.news.naver.com/mnews/article/022/0003500616?sid=103  
+
+     https://n.news.naver.com/mnews/article/022/0003500616?sid=103  
+
 이 링크를 잘 복사해두세요.  
   
 > **Q: 데스크톱 뉴스 페이지, 혹은 다른 사이트도 지원할 계획이 있나요?**  
@@ -68,8 +75,10 @@
   
 ## news2act 실행하기  
 수고하셨습니다!😄 이제 **news2atc**를 실행해봅시다. **news2atc**의 압축을 푼 폴더에서 터미널을 열고 다음을 입력합니다. `main.py`가 있는 폴더가 맞습니다.  
-  
- $ py main.py  > **Windows**에선 해당 폴더에서 **Shift**⌨️키를 누른 상태에서 **마우스 오른쪽 버튼🖱️**을 누르면 **여기에서 PowerShell 창 열기**를 선택하여 터미널을 열 수 있어요.  
+
+     $ py main.py
+
+ > **Windows**에선 해당 폴더에서 **Shift**⌨️키를 누른 상태에서 **마우스 오른쪽 버튼🖱️**을 누르면 **여기에서 PowerShell 창 열기**를 선택하여 터미널을 열 수 있어요.  
   
 이제 아래와 같이 나타납니다.
 
