@@ -6,10 +6,9 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 
 
-def crawler(news_url, chrome_driver_dir):
-    # newsUrl = input("뉴스의 URL을 입력하세요 : ")
+def crawler(driver):
+    news_url = input("뉴스의 URL을 입력하세요 : ")
     print("해당 URL에서 뉴스를 가져옵니다.")
-    driver = webdriver.Chrome(chrome_driver_dir)
     # driver.implicitly_wait(3)  # 암묵적으로 웹 자원 로드를 위해 3초까지 기다려준다
     print("webdriver 조작중...")
 
@@ -22,7 +21,7 @@ def crawler(news_url, chrome_driver_dir):
 
         print("html객체 파싱중..")
         soup = BeautifulSoup(driver.page_source, 'html.parser')
-        driver.quit()
+
         print("webdriver 종료")
 
         print("컨텐츠 추출중...")
@@ -37,11 +36,10 @@ def crawler(news_url, chrome_driver_dir):
         article_element_list = soup.select(
             '#dic_area > span.article_p'
         )
-    except Exception:
-        print("뉴스 처리 중 오류가 발생하였습니다. 다음을 확인해주세요:")
+    except ConnectionError:
+        print("연결에 실패하였습니다. 다음을 확인해주세요 : ")
         print(" - 올바른 URL을 입력하였나요?")
         print(" - 네트워크에 연결되어있나요?")
-        print(" - Chrome Web Driver 경로가 올바른가요?")
 
     # articleElementList에서 기사를 수집해 article에 저장
     article_context = ""
@@ -50,7 +48,7 @@ def crawler(news_url, chrome_driver_dir):
 
     article_context = article_context.rstrip()  # 마지막 공백('\n\n') 제거
 
-    article_context_list = article_context_splitter(article_context) # 훈련소 편지 제한(800)길이로 나눈다
+    article_context_list = article_context_splitter(article_context)  # 훈련소 편지 제한(800)길이로 나눈다
     article = {"journalName": journal_name, "title": title, "articleContextList": article_context_list,
                "articleContext": article_context}
     save_data(article=article)
@@ -62,14 +60,13 @@ def save_data(article):
     _file_name = "dump.news"
     print(_file_name + "에 저장중...")
 
-
     with open(_file_name, 'w', encoding='utf-8') as _plain_article:
         # https://docs.python.org/ko/3/library/os.html#os.linesep : 텍스트 모드로 열린(기본값) 파일에 쓸 때 줄 종결자로 os.linesep를 사용하지 마십시오; 대신 모든 플랫폼에서 단일 '\n'를 사용하십시오.
         _plain_article.write("신문사 : " + article[
             'journalName'] + '\n')
         _plain_article.write("제목 : " + article['title'] + '\n')
         _plain_article.write("내용 : " + '\n')
-        _plain_article.write(article['articleContext']+'\n')
+        _plain_article.write(article['articleContext'] + '\n')
         print("기사가 " + _file_name + "에 저장되었습니다.")
 
     with open('dump.json', 'w', encoding='utf-8') as _json_data:
