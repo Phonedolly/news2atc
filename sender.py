@@ -75,7 +75,7 @@ def write_letter(recruit_data, article, driver):
         #
         try:
             element = WebDriverWait(driver, 240).until(
-                EC.presence_of_element_located((By.XPATH, '//*[@id="item_body"]/div[2]/div/div/div[2]/div[2]/div/div')))
+                EC.presence_of_element_located((By.CSS_SELECTOR, '#jwxe_main_content > div > div > form > fieldset > div > div')))
 
         except TimeoutError:
             is_success = False
