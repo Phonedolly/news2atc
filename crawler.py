@@ -41,6 +41,8 @@ def crawler(driver):
         print(" - 올바른 URL을 입력하였나요?")
         print(" - 네트워크에 연결되어있나요?")
 
+        exit(1)
+
     # articleElementList에서 기사를 수집해 article에 저장
     article_context = ""
     for article_element in article_element_list:

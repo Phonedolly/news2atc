@@ -28,10 +28,14 @@ def init():
             chrome_driver_dir = json_data['ChromeDriverDir']
             recruit_data = json_data['recruit']
             # PhantomJSDir = json_data['PhantomJSDir']
-    except FileNotFoundError:
+
+    except FileNotFoundError as e:
+        print(e)
         print("config.json을 찾지 못했습니다.")
         exit(1)
-    except KeyError:
+
+    except KeyError as e:
+        print(e)
         print("config.json의 형식이 올바르지 않습니다. config.json은 'ChromeDriverDir' 키와 적절한 값(chromedriver의 경로)을 포함해야합니다.")
         exit(1)
 
