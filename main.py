@@ -21,7 +21,7 @@ def clear_screen():
 
 
 def init():
-    print("load config.json")
+    print("config.json 불러오는중...")
     try:
         with open('config.json', encoding='utf-8') as f:
             json_data = json.load(f)
@@ -39,9 +39,7 @@ def init():
         print("config.json의 형식이 올바르지 않습니다. config.json은 'ChromeDriverDir' 키와 적절한 값(chromedriver의 경로)을 포함해야합니다.")
         exit(1)
 
-
-
-    print("init chrome web driver")
+    print("Chrome Web Driver 초기화")
     driver = webdriver.Chrome(chrome_driver_dir)
 
     return {'driver': driver, 'recruit_data': recruit_data}
