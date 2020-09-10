@@ -12,6 +12,7 @@ def crawler(driver):
     # driver.implicitly_wait(3)  # 암묵적으로 웹 자원 로드를 위해 3초까지 기다려준다
     print("webdriver 조작중...")
 
+    # TODO .article_p 클래스 영역이 없는 기사를 처리하지 못함
     # TODO 더 다양한 예외 case에 대응해야한다
     # TODO try: 블록 줄이기
     try:
