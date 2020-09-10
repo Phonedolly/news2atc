@@ -54,6 +54,7 @@ if __name__ == '__main__':
     recruit_data = initObj['recruit_data']
 
     while True:
+        driver.get("https://github.com/Phonedolly/news2atc")
         clear_screen()
         print("=============Hello! news2atc=============")
         print("c. 뉴스 가져오고 훈련소로 보내기")
