@@ -13,16 +13,21 @@ def sender(recruit_data, article, driver):
     print("육군훈련소에 뉴스를 보냅니다.")
     # driver.implicitly_wait(1)
 
+    # 800자 단위로 잘린 기사를 각각 보낸다.
     num_of_letter = len(article['articleContextList'])
     print("보낼 편지 수 : " + str(num_of_letter))
     for i in range(num_of_letter):
-
         if not write_letter(i, recruit_data, article, driver):
             print("편지를 보내는데 실패했습니다. 다시 시도해보세요")
             return
 
 
-def require_login(driver):
+def is_require_login(driver):
+    """
+    본인 인증이 필요한지 확인한다
+    :param driver: 현재 사용하고 있는 웹 드라이버 객체
+    :return: 본인 인증의 필요 여부
+    """
     # 찾지 못할 경우 -1을 리턴한다
     if driver.find_element_by_class_name('sub_wrap').text.find('실명제 적용 게시판입니다.') == -1:
         return False
@@ -31,6 +36,13 @@ def require_login(driver):
 
 
 def gen_password():
+    """
+    현재 날짜를 바탕으로 편지 비밀번호를 생성한다.
+    예를 들어 현재 9월 10일일 경우, 비밀번호는 '0910'이 된다.
+
+    :return: 생성한 비밀번호
+    """
+
     month_num = datetime.datetime.now().month
     if month_num < 10:
         month = str("0" + str(month_num))
@@ -50,7 +62,7 @@ def write_letter(letter_index, recruit_data, article, driver):
     _atcURL = "http://www.katc.mil.kr/katc/community/children.jsp"
 
     # TODO 예외처리하기
-    print("webdriver 조작중...")
+    print("web driver 조작중...")
     print("육군훈련소 URL 접근중...")
     driver.get(_atcURL)
 
@@ -79,7 +91,7 @@ def write_letter(letter_index, recruit_data, article, driver):
     driver.find_element_by_xpath('//*[@id="letterBtn"]').click()
 
     # 본인인증이 필요한가
-    if require_login(driver):
+    if is_require_login(driver):
         print("인터넷 편지 작성을 위해 실명인증이 필요합니다")
         print("실명인증을 진행하세요")
         # 본인인증 버튼 클릭
@@ -95,18 +107,20 @@ def write_letter(letter_index, recruit_data, article, driver):
             is_success = False
             print('제한 시간이 초과되었습니다. 다시 시도하세요.')
 
-        finally:
-            pass
+        print("본인인증에 성공하였습니다.")
 
     else:
         print("실명 인증 세션이 유지되고 있습니다")
 
     # 편지 입력 폼 채우기
+    # 훈련병의 소속
     division = driver.find_element_by_xpath(
         '//*[@id="jwxe_main_content"]/div/div/form/fieldset/table/tbody/tr[1]/td').text.strip()
 
+    # 받는 사람
     to = driver.find_element_by_xpath(
         '//*[@id="jwxe_main_content"]/div/div/form/fieldset/table/tbody/tr[2]/td').text.strip()
+    # 보내는 사람
     me = driver.find_element_by_xpath(
         '//*[@id="jwxe_main_content"]/div/div/form/fieldset/table/tbody/tr[3]/td').text.strip()
 
@@ -130,4 +144,5 @@ def write_letter(letter_index, recruit_data, article, driver):
     driver.implicitly_wait(1)
     driver.switch_to.alert.accept()
 
+    print("편지 작성을 성공했습니다.")
     return is_success

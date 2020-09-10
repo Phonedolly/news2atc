@@ -61,7 +61,7 @@ def save_data(article):
     print(_file_name + "에 저장중...")
 
     with open(_file_name, 'w', encoding='utf-8') as _plain_article:
-        # https://docs.python.org/ko/3/library/os.html#os.linesep : 텍스트 모드로 열린(기본값) 파일에 쓸 때 줄 종결자로 os.linesep를 사용하지 마십시오; 대신 모든 플랫폼에서 단일 '\n'를 사용하십시오.
+        # https://docs.python.org/ko/3/library/os.html#os.linesep
         _plain_article.write("신문사 : " + article[
             'journalName'] + '\n')
         _plain_article.write("제목 : " + article['title'] + '\n')
@@ -80,8 +80,12 @@ def article_context_splitter(article_context):
     article_context_list = []
     for i in range(math.ceil(len(article_context) / _context_length_limit)):
         _first = i * 800
-        _last = (i + 1) * _context_length_limit if (i + 1) * _context_length_limit < len(article_context) else len(
-            article_context)
+
+        if (i + 1) * _context_length_limit < len(article_context):
+            _last = (i + 1) * _context_length_limit
+        else:
+            _last = len(article_context)
+
         article_context_list.append(article_context[_first:_last])
 
     return article_context_list

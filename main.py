@@ -13,7 +13,7 @@ import sender
 OS_TYPE = platform.system()
 
 
-def clearScreen():
+def clear_screen():
     if OS_TYPE != 'Windows':
         os.system('clear')  # not windows
     else:
@@ -52,11 +52,11 @@ if __name__ == '__main__':
     recruit_data = initObj['recruit_data']
 
     while True:
-        clearScreen()
+        clear_screen()
         print("=============Hello! news2atc=============")
         print("c. 뉴스 가져오고 훈련소로 보내기")
-        print("q. 끝내기")
         print("h. 도움말")
+        print("q. 끝내기")
 
         option = input("\n\n옵션을 입력하세요 : ")
 
@@ -64,15 +64,8 @@ if __name__ == '__main__':
             article = crawler.crawler(driver)
             sender.sender(recruit_data, article, driver)
 
-        elif option == 'q':
-            print("Chrome Web Driver 종료 중...")
-            driver.quit()
-
-            print("bye <3")
-            break
-
         elif option == 'h':
-            clearScreen()
+            clear_screen()
             print("=============Hello! news2atc=============")
             print("news2atc를 사용해주셔서 감사합니다!", end="\n\n")
             print(
@@ -84,3 +77,14 @@ if __name__ == '__main__':
             print("이 프로그램의 소스 코드는 https://github.com/Phonedolly/news2atc에서 확인하실 수 있습니다.", end="\n\n")
             print("계속하려면 Enter", end="\n")
             input()
+
+
+        elif option == 'q':
+            print("Chrome Web Driver 종료 중...")
+            driver.quit()
+
+            print("bye <3")
+            break
+
+        else:
+            clear_screen()
