@@ -38,7 +38,7 @@ def crawler(driver):
         driver.find_element_by_class_name('article_p')
 
         # 기사 내용 (.arcitle_p로 분리되어있는 기사 문단들의 배열)
-        article_element_list = soup.select_one(
+        article_element_list = soup.select(
             '#dic_area > span.article_p'
         )
 
