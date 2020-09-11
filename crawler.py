@@ -4,6 +4,7 @@ import math
 # import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
 
 
 def crawler(driver):
@@ -33,23 +34,31 @@ def crawler(driver):
             '#ct > div.media_end_head.go_trans > div.media_end_head_title > h2'
         ).text  # 기사 제목
 
+        # article_p 클래스를 찾지 못하는 경우 예외처리로 이동한다.
+        driver.find_element_by_class_name('article_p')
+
         # 기사 내용 (.arcitle_p로 분리되어있는 기사 문단들의 배열)
-        article_element_list = soup.select(
+        article_element_list = soup.select_one(
             '#dic_area > span.article_p'
         )
+
+        # articleElementList에서 기사를 수집해 article에 저장
+        article_context = ""
+        for article_element in article_element_list:
+            article_context += article_element.text.strip() + '\n\n'  # articleElement.text의 맨 앞에 4단위 whitespace 제거
+
+        article_context = article_context.rstrip()  # 마지막 공백('\n\n') 제거
+
+    except NoSuchElementException:
+        # TODO 기사의 문단 나눔까지 다 날라가는 현상 개선하기
+        article_context = soup.select_one('#dic_area').get_text().strip()
+
     except ConnectionError:
         print("연결에 실패하였습니다. 다음을 확인해주세요 : ")
         print(" - 올바른 URL을 입력하였나요?")
         print(" - 네트워크에 연결되어있나요?")
 
         exit(1)
-
-    # articleElementList에서 기사를 수집해 article에 저장
-    article_context = ""
-    for article_element in article_element_list:
-        article_context += article_element.text.strip() + '\n\n'  # articleElement.text의 맨 앞에 4단위 whitespace 제거
-
-    article_context = article_context.rstrip()  # 마지막 공백('\n\n') 제거
 
     article_context_list = article_context_splitter(article_context)  # 훈련소 편지 제한(800)길이로 나눈다
     article = {"journalName": journal_name, "title": title, "articleContextList": article_context_list,
