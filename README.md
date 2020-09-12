@@ -144,14 +144,14 @@ $ pip install selenium
 <h3 id="config.json-설정하기">config.json 설정하기</h3>
 <p>이제 <strong>news2atc</strong>가 Chrome Driver를 인식할 수 있도록 작업해봅시다. 다음과 같이 <code>master.zip</code>의 압축을 푼 곳에서 <code>config.json</code>을 생성합니다.</p>
 <p>다음과 같이 작성합니다.</p>
-<pre><code>	{  
-	   "ChromeDriverDir" : "your_chrome_driver_path",  
-	   "recruit": {  
-	      "joinDate": "20200910",  
-	      "birthDay": "000101",  
-	      "name": "홍길동"  
-		}  
-	}
+<pre><code>{  
+   "ChromeDriverDir" : "your_chrome_driver_path",  
+   "recruit": {  
+      "joinDate": "20200910",  
+      "birthDay": "000101",  
+      "name": "홍길동"  
+	}  
+}
 </code></pre>
 <p>세부사항은 아래 <strong>표</strong>를 참조하세요.</p>
 
