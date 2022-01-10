@@ -6,6 +6,8 @@ import json
 import sys
 
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
 import crawler
 import sender
@@ -25,7 +27,7 @@ def init():
     try:
         with open('config.json', encoding='utf-8') as f:
             json_data = json.load(f)
-            chrome_driver_dir = json_data['ChromeDriverDir']
+            chrome_driver_dir = "chromedriver.exe"
             recruit_data = json_data['recruit']
             # PhantomJSDir = json_data['PhantomJSDir']
 
@@ -40,7 +42,7 @@ def init():
         exit(1)
 
     print("Chrome Web Driver 초기화")
-    driver = webdriver.Chrome(chrome_driver_dir)
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
     return {'driver': driver, 'recruit_data': recruit_data}
 
