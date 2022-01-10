@@ -35,6 +35,22 @@ def is_require_login(driver):
         return True
 
 
+def get_date():
+    month_num = datetime.datetime.now().month
+    if month_num < 10:
+        month = str("0" + str(month_num))
+    else:
+        month = str(month_num)
+
+    day_num = datetime.datetime.now().day
+    if day_num < 10:
+        day = str("0" + str(day_num))
+    else:
+        day = str(day_num)
+
+    return month + day
+
+
 def gen_password():
     """
     현재 날짜를 바탕으로 편지 비밀번호를 생성한다.
@@ -43,15 +59,7 @@ def gen_password():
     :return: 생성한 비밀번호
     """
 
-    month_num = datetime.datetime.now().month
-    if month_num < 10:
-        month = str("0" + str(month_num))
-    else:
-        month = str(month_num)
-
-    day = str(datetime.datetime.now().day)
-
-    password = month + day
+    password = get_date()
     print("편지 비밀번호는 '" + password + "' 입니다")
 
     return password
