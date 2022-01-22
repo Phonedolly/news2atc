@@ -13,7 +13,6 @@ import crawler
 import sender
 
 OS_TYPE = platform.system()
-USER_AGENT = "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.188 Safari/537.36 CrKey/1.54.250320"
 
 
 def clear_screen():
@@ -43,11 +42,8 @@ def init():
         exit(1)
 
     options = webdriver.ChromeOptions()
-    options.add_argument(
-        "user-agent=" + USER_AGENT
-    )
     print("Chrome Web Driver 초기화")
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
     return {'driver': driver, 'recruit_data': recruit_data}
 
@@ -61,7 +57,7 @@ if __name__ == '__main__':
     recruit_data = initObj['recruit_data']
 
     while True:
-        driver.get("https://m.naver.com")
+        driver.get("https://news.naver.com")
         clear_screen()
         print("=============Hello! news2atc=============")
         print("c. 뉴스 가져오고 훈련소로 보내기")
