@@ -49,12 +49,9 @@
 		q. 끝내기
 	이제 `c`를 누르고 프로그램의 지시사항대로 진행해보세요.
 	> ⚠️유의사항⚠️
-	> - **news2act**는 네이버 뉴스 모바일 페이지에서 뉴스를 가져오도록 만들어졌습니다. 아래 링크 중 하나에 접속하여 뉴스 기사의 URL을 구해보세요.
-	>
-	> 	- 네이버 모바일  
-	>[**m.naver.com**](https://m.naver.com)  
-	>	- 네이버 뉴스 모바일  
-	>[**m.news.naver.com**](https://m.news.naver.com) 
+	> - **news2act**는 네이버 뉴스 모바일 페이지에서 뉴스를 가져오도록 만들어졌습니다. 아래 링크에 접속하여 뉴스 기사의 URL을 구해보세요.
+	>	- 네이버 뉴스
+	>[**news.naver.com**](https://news.naver.com) 
 	>
 	>	아래와 같은 형식의 뉴스 기사 URL에서 작동합니다.
 	>`https://n.news.naver.com/mnews/article/022/0003500616?sid=103`
@@ -115,13 +112,9 @@
 
 # Run  
 ## 가져올 네이버 뉴스 링크 찾아보기  
-**news2act**는 네이버 뉴스 모바일 페이지에서 뉴스를 가져오도록 만들어졌습니다. 아래 링크 중 하나에 접속해보세요.
-  
- - 네이버 모바일  
-[**m.naver.com**](https://m.naver.com)  
-  
+**news2atc**는 네이버 뉴스 모바일 페이지에서 뉴스를 가져오도록 만들어졌습니다. 아래 링크에 접속해보세요.
  - 네이버 뉴스 모바일  
-[**m.news.naver.com**](https://m.news.naver.com) 
+[**m.news.naver.com**](https://news.naver.com) 
   
 위 페이지에서 아무 뉴스나 들어가셔서 해당 링크를 복사합니다. 아래와 같은 형식이 될 것입니다.
 
