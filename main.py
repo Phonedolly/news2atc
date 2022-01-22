@@ -13,6 +13,7 @@ import crawler
 import sender
 
 OS_TYPE = platform.system()
+USER_AGENT = "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.188 Safari/537.36 CrKey/1.54.250320"
 
 
 def clear_screen():
@@ -41,8 +42,12 @@ def init():
         print("config.json의 형식이 올바르지 않습니다. config.json은 'ChromeDriverDir' 키와 적절한 값(chromedriver의 경로)을 포함해야합니다.")
         exit(1)
 
+    options = webdriver.ChromeOptions()
+    options.add_argument(
+        "user-agent=" + USER_AGENT
+    )
     print("Chrome Web Driver 초기화")
-    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
     return {'driver': driver, 'recruit_data': recruit_data}
 
